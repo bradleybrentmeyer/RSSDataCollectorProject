@@ -22,20 +22,20 @@ public class Mail{
     String gmailPwd = "";
     String gmailRecvr = "";
 	
-	Mail(){
-		// default constructor
-	}
+    Mail(){
+	// default constructor
+    }
     
     Mail(String sender, String recvr, String pwd){
 	
-	    this.smtpHost = "smtp.gmail.com";
+	this.smtpHost = "smtp.gmail.com";
         this.smtpPort = "587";
         this.gmailSender = sender;
         this.gmailPwd = pwd;
         this.gmailRecvr = recvr;
-	}
+    }
 
-	public <E> void send(E msgTxt) {
+    public <E> void send(E msgTxt) {
     		
         Properties prop = System.getProperties();
         prop.setProperty("mail.smtp.auth", "true");
@@ -60,25 +60,24 @@ public class Mail{
             e.printStackTrace();
         } catch (MessagingException e) {
             System.out.println((new Date()).toString() + " Message exception: " + e.getMessage());
-        	//e.printStackTrace();
+            //e.printStackTrace();
         }
     }   
     
-	public void test() {
+    public void test() {
 
-		try{
-        	this.send("test message"); 
+	try{
+            this.send("test message"); 
         }catch(Exception e){
-        	System.out.println("Error sending Mail " + e.getMessage());
-        	System.exit(-1);
+            System.out.println("Error sending Mail " + e.getMessage());
+        System.exit(-1);
         }
-		
-	}
+    }
 	
-	 public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws IOException{
 		 
-		 Mail m = new Mail("senderTest@gmail.com", "recvrTest@gmail.com", "mypassword12345");
-		 m.test();
-	 }
+	Mail m = new Mail("senderTest@gmail.com", "recvrTest@gmail.com", "mypassword12345");
+	m.test();
+    }
 	 
 }
